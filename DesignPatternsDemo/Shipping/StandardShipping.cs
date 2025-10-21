@@ -10,12 +10,6 @@ namespace DesignPatternsDemo.Shipping
     public sealed class StandardShipping : IShippingService
     {
         public string Name => "Standard Shipping";
-        public decimal CalculateShippingCost(Order order)
-        {
-            // standart kargo hesaplama örneği
-            decimal baseRate = 5.00m; // Sabit başlangıç ücreti
-            decimal weightRate = 0.50m; // Ağırlık başına ücret
-            return baseRate + (weightRate * order.Weight);
-        }   
+        public decimal CalculateShippingCost(Order order) => 5.00m + (0.50m * order.Weight);
     }
 }
