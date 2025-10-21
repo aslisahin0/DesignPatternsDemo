@@ -1,4 +1,6 @@
-﻿namespace DesignPatternsDemo.Discount;
+﻿using DesignPatternsDemo.Domain;
+
+namespace DesignPatternsDemo.Discount;
 
 public sealed class DiscountContext
 {
