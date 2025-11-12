@@ -1,7 +1,9 @@
 ﻿// /Infrastructure/RegistrationExtensions.cs
 using DesignPatternsDemo.Discount;
 using DesignPatternsDemo.Domain;
+using DesignPatternsDemo.Maps;
 using DesignPatternsDemo.Shipping;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using IDiscountStrategy = DesignPatternsDemo.Domain.IDiscountStrategy;
 using IShippingService = DesignPatternsDemo.Domain.IShippingService;
@@ -29,6 +31,13 @@ public static class RegistrationExtensions
         // Pricing service
         services.AddTransient<Pricing.OrderPricingService>();
 
+        return services;
+    }
+    
+    public static IServiceCollection AddStaticMaps(this IServiceCollection services, IConfiguration cfg)
+    {
+        services.Configure<GoogleMapsOptions>(cfg.GetSection("Google"));
+        services.AddHttpClient<IStaticMapClient, GoogleStaticMapClient>();
         return services;
     }
 }
