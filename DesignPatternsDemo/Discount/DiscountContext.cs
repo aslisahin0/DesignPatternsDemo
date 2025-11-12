@@ -10,8 +10,4 @@ public sealed class DiscountContext
     {
         Strategy = strategy;
     }
-
-    public void SetStrategy(IDiscountStrategy strategy) => Strategy = strategy;
-
-    public decimal Apply(decimal amount) => Strategy.ApplyDiscount(amount);
 }
